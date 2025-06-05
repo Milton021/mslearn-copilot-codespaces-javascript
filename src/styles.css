@@ -123,3 +123,88 @@ img.socialIcon {
   height: 30px;
   width: 30px;
 }
+/* create an amazing animation to do social icons */
+@keyframes socialIconAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.socialIcon:hover {
+  animation: socialIconAnimation 0.5s ease-in-out infinite;
+  /* Ativa o pseudo-elemento de estrelas */
+}
+.socialIcon {
+  position: relative;
+  z-index: 1;
+}
+.socialIcon::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 2;
+  background: 
+    radial-gradient(circle at 10% 20%, #fff8 2px, transparent 3px),
+    radial-gradient(circle at 80% 30%, #fff6 1.5px, transparent 2.5px),
+    radial-gradient(circle at 60% 80%, #fff9 2.5px, transparent 3.5px),
+    radial-gradient(circle at 30% 70%, #fff7 1.8px, transparent 2.8px),
+    radial-gradient(circle at 70% 60%, #fff 2.2px, transparent 3.2px);
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.socialIcon:hover::after {
+  opacity: 1;
+  animation: sparklingStars 0.8s linear infinite;
+}
+
+@keyframes sparklingStars {
+  0% {
+    opacity: 1;
+    filter: brightness(1) blur(0px);
+    background-position:
+      0px 0px,
+      0px 0px,
+      0px 0px,
+      0px 0px,
+      0px 0px;
+  }
+  30% {
+    filter: brightness(1.5) blur(0.5px);
+    background-position:
+      2px -2px,
+      -2px 2px,
+      2px 2px,
+      -2px -2px,
+      1px 1px;
+  }
+  60% {
+    filter: brightness(2) blur(1px);
+    background-position:
+      -2px 2px,
+      2px -2px,
+      -2px -2px,
+      2px 2px,
+      -1px -1px;
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1) blur(0px);
+    background-position:
+      0px 0px,
+      0px 0px,
+      0px 0px,
+      0px 0px,
+      0px 0px;
+  }
+}
